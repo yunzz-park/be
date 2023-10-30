@@ -1,4 +1,4 @@
-const app = require("../index.js")
+const app = require("../main.js")
 // 연결 포트
 const PORT = 4000;
 // app.listen() http 서버를 생성해주는 함수
