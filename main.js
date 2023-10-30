@@ -17,7 +17,7 @@ app.use(cors());
 
 
 app.use('/api/signin', home);
-
+app.use('/api/diary', home);
 
 
 module.exports = app; 

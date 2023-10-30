@@ -2,7 +2,7 @@
   "name": "log",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "nodemonConfig": {
     "ignore": [
       "data/*"

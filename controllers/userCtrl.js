@@ -15,7 +15,7 @@ const userCtrl = {
   insertUser : async (req, res) => {
     const {id, pwd, email} = req.body;
     const sql = `INSERT INTO signin(id, pwd, email)
-    VALUES(${idx}, ${pwd}, ${email});`
+    VALUES(${id}, ${pwd}, ${email});`
 
     connection.query(
       sql,(error, rows) => {
@@ -26,16 +26,37 @@ const userCtrl = {
   }
 }
 
-const logIn = {
-  getUsers: async (req, res) => {
-    connection.query
+
+
+
+const diary = {
+  getAllDiaries: async (req, res) => {
+    connection.query('SELECT * FROM diary', (error, rows) => {
+      if(error) throw error;
+      res.send(rows);
+    })
+  },
+  insertDiaries : async (req, res) => {
+    const {d_title, d_content} = req.body;
+    const sql = `INSERT INTO diary(d_title, d_content)
+    VALUES(${d_title}, ${d_content});`
+
+    connection.query(
+      sql,(error, rows) => {
+        if(error) throw error;
+        res.send(rows);
+      }
+    )
   }
 }
 
 
+
+
+
 module.exports = {
   userCtrl,
-  logIn,
-  diary,
-  check
+  // logIn,
+  diary
+  // check
 };

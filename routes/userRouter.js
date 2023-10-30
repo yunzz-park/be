@@ -1,18 +1,25 @@
 const express = require('express');
-const ctrl = require("../controllers/userCtrl");
+const { ctrl, userCtrl, diary } = require("../controllers/userCtrl");
+
 const router = express.Router();
 
 router.route('/')
-    .get(ctrl.getUsers)
-    .post(ctrl.insertUser)
+    .get(userCtrl.getUsers)
+    .post(userCtrl.insertUser)
 
 
-router.route('/register')
-    .post
+router.route("/diary")
+    .get(diary.getAllDiaries)
+    .post(diary.insertDiaries)
 
-router.get("/", userCtrl.home);
-router.get("/login", logIN.login);
-router.get("/diay", diary.diary);
-router.get("/check", check.check);
+
+
+// router.route('/register')
+//     .post(ctrl.getUsers)
+
+// router.get("/", userCtrl.home);
+// router.get("/login", logIn.login);
+
+// router.get("/check", check.check);
 
 module.exports = router;
