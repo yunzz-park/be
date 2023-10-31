@@ -50,13 +50,32 @@ const diary = {
   }
 }
 
+const check = {
+  getAllChecks: async (req, res) => {
+    connection.query('SELECT * FROM check', (error, rows) => {
+      if(error) throw error;
+      res.send(rows);
+    })
+  },
+  insertChecks: async (req, res) => {
+    const {c_list, c_content} = req.body;
+    const sql = `INSERT INTO check(c_list, c_content)
+    VALUES(${c_list}, ${c_content});`
 
+    connection.query(
+      sql,(error, rows) => {
+        if(error) throw error;
+        res.send(rows);
+      }
+    )
+  } 
+}
 
 
 
 module.exports = {
   userCtrl,
   // logIn,
-  diary
-  // check
+  diary,
+  check
 };

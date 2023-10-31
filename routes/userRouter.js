@@ -1,18 +1,23 @@
 const express = require('express');
-const { ctrl, userCtrl, diary } = require("../controllers/userCtrl");
+const { ctrl, userCtrl, diary, check } = require("../controllers/userCtrl");
 
-const router = express.Router();
+const homeRouter = express.Router();
+const diaryRouter = express.Router();
+const checkRouter = express.Router();
 
-router.route('/')
+homeRouter.route('/:user')
     .get(userCtrl.getUsers)
     .post(userCtrl.insertUser)
 
 
-router.route("/diary")
+diaryRouter.route("/diary/:diary")
     .get(diary.getAllDiaries)
     .post(diary.insertDiaries)
 
 
+checkRouter.route('/check/:check')
+    .get(check.getAllChecks)
+    .post(check.insertChecks)
 
 // router.route('/register')
 //     .post(ctrl.getUsers)
@@ -22,4 +27,8 @@ router.route("/diary")
 
 // router.get("/check", check.check);
 
-module.exports = router;
+module.exports = {
+    homeRouter,
+    diaryRouter,
+    checkRouter
+};
